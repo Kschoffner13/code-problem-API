@@ -10,15 +10,28 @@ POST http://localhost:5186/Problems
 content-Type: application/json
 
 {
-  "Id": "4",
-  "Title": "Sample Problem",
-  "Description": "This is a sample problem description.",
-  "Difficulty": "Easy",
-  "Category": "Sample Category",
-  "Tags": "Sample, Test",
-  "Link": "https://example.com/sample-problem"
+  "id": "",
+  "title": "Two Sum",
+  "testCases": [
+    {
+      "input": {
+        "nums": [2, 7, 11, 15],
+        "target": 9
+      },
+      "expectedOutput": [0, 1]
+    }
+  ],
+  "constraints": {
+    "arrayLength": "2 <= nums.length <= 10^4",
+    "uniqueSolution": "Only one valid answer exists"
+  }
 }
 
 ###
 
 DELETE http://localhost:5186/Problems/4
+
+
+### 
+
+GET http://localhost:5186/
