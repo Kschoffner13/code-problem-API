@@ -1,5 +1,24 @@
 
 
 
-GET http://localhost:5186/
+
+GET http://localhost:5186/Problems
+
  
+###
+POST http://localhost:5186/Problems
+content-Type: application/json
+
+{
+  "Id": "4",
+  "Title": "Sample Problem",
+  "Description": "This is a sample problem description.",
+  "Difficulty": "Easy",
+  "Category": "Sample Category",
+  "Tags": "Sample, Test",
+  "Link": "https://example.com/sample-problem"
+}
+
+###
+
+DELETE http://localhost:5186/Problems/4

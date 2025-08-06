@@ -25,3 +25,4 @@ C:\PROJECTS\code-problem-API\Code-Problem-Fetcher\obj\Debug\net9.0\refint\Code-P
 C:\PROJECTS\code-problem-API\Code-Problem-Fetcher\obj\Debug\net9.0\Code-Problem-Fetcher.pdb
 C:\PROJECTS\code-problem-API\Code-Problem-Fetcher\obj\Debug\net9.0\Code-Problem-Fetcher.genruntimeconfig.cache
 C:\PROJECTS\code-problem-API\Code-Problem-Fetcher\obj\Debug\net9.0\ref\Code-Problem-Fetcher.dll
+C:\PROJECTS\code-problem-API\Code-Problem-Fetcher\obj\Debug\net9.0\Code-Problem-Fetcher.sourcelink.json
