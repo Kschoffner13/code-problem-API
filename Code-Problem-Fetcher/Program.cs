@@ -134,6 +134,36 @@ app.MapDelete("/Problems/{id}", Results<NoContent, NotFound> (string id) =>
     
     problems.Remove(problem);
     return TypedResults.NoContent();
+})
+.AddEndpointFilter(async (context, next) =>
+{
+    var id = context.GetArgument<string>(0); // get the ID argument
+
+    var errors = new Dictionary<string, string[]>(); // list to collect errors
+    var problem = problems.FirstOrDefault(p => p.Id == id);
+
+    if (string.IsNullOrWhiteSpace(id))
+    {
+        errors.Add("Id", ["Id is required."]); // if id is null or empty, add an error
+        Console.WriteLine("Problem is valid, deleting from the list.");
+    }
+    else if (problems.FirstOrDefault(p => p.Id == id) is null)
+    {
+        errors.Add("Id", [$"Problem with ID: {id} not found."]); // if problem with that id does not exist, add an error
+        Console.WriteLine("Problem is valid, deleting from the list.");
+        // if no errors, continue to the next middleware
+    }
+
+
+    if (errors.Count > 0)
+    {
+        Console.WriteLine("Problem is valid, deleting from the list.");
+        // if no errors, continue to the next middleware
+        return Results.ValidationProblem(errors);
+    }
+    
+    // if the problem exists, continue to the next middleware
+    return await next(context);
 });
 
 app.Run();

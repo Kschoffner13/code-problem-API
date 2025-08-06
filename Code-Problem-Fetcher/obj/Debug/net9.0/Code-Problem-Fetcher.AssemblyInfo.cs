@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Code-Problem-Fetcher")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7613874973110f54dcc4b4ac5ad33f58187926c4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5694d6246f7964d519cd1c71f16ccb2b711fdcee")]
 [assembly: System.Reflection.AssemblyProductAttribute("Code-Problem-Fetcher")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Code-Problem-Fetcher")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

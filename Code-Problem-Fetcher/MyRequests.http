@@ -29,7 +29,7 @@ content-Type: application/json
 
 ###
 
-DELETE http://localhost:5186/Problems/4
+DELETE http://localhost:5186/Problems/
 
 
 ### 
