@@ -77,11 +77,11 @@ app.MapPost("/Problems", async (Problem problem, ProblemService service) =>
 // format is url route, and thenmethod that is called when that route is hit
 app.MapGet("/test", () => "Hello World!");
 app.MapGet("/Problems", async (ProblemService service) => await service.getAllProblems());
-// app.MapGet("/Problems/{id}", async (string id, ProblemService service) =>
-// {
-//     var problem = await service.getProblemById(id);
-//     return problem is not null ? TypedResults.Ok(problem) : TypedResults.NotFound();
-// });
+app.MapGet("/Problems/{id}", async (string id, ProblemService service) =>
+{
+    var problem = await service.getProblemById(id);
+    return TypedResults.Ok(problem);
+});
 
 
 //// Update functions to update a problem by ID (may not be needed)
@@ -89,39 +89,35 @@ app.MapGet("/Problems", async (ProblemService service) => await service.getAllPr
 
 
 //// Delete function to remove a problem by ID (may not be needed)
-// app.MapDelete("/Problems/{id}", async (string id, [FromServices] ProblemService service) =>
-// {
-//     var problem = await service.getProblemById(id);
-//     if (problem is null)
-//     {
-//         return TypedResults.NotFound();
-//     }
+app.MapDelete("/Problems/{id}", async (string id, ProblemService service) =>
+{
+    var problem = await service.getProblemById(id);
 
-//     await service.deleteProblem(id);
-//     return TypedResults.NoContent();
-// })
-// .AddEndpointFilter(async (context, next) =>
-// {
-//     var id = context.GetArgument<string>(0); // get the ID argument
+    await service.deleteProblem(id);
+    return TypedResults.NoContent();
+})
+.AddEndpointFilter(async (context, next) =>
+{
+    var id = context.GetArgument<string>(0); // get the ID argument
 
-//     var errors = new Dictionary<string, string[]>(); // list to collect errors
+    var errors = new Dictionary<string, string[]>(); // list to collect errors
 
-//     if (string.IsNullOrWhiteSpace(id))
-//     {
-//         errors.Add("Id", ["Id is required."]); // if id is null or empty, add an error
-//         Console.WriteLine("Problem is valid, deleting from the list.");
+    if (string.IsNullOrWhiteSpace(id))
+    {
+        errors.Add("Id", ["Id is required."]); // if id is null or empty, add an error
+        Console.WriteLine("Problem is valid, deleting from the list.");
 
-//     }
-//     if (errors.Count > 0)
-//     {
-//         Console.WriteLine("Problem is valid, deleting from the list.");
-//         // if there are errors, return a validation problem wrapped in a Task
-//         return await Task.FromResult(Results.ValidationProblem(errors));
-//     }
+    }
+    if (errors.Count > 0)
+    {
+        Console.WriteLine("Problem is valid, deleting from the list.");
+        // if there are errors, return a validation problem wrapped in a Task
+        return await Task.FromResult(Results.ValidationProblem(errors));
+    }
     
-//     // if the problem exists, continue to the next middleware
-//     return await next(context);
-// });
+    // if the problem exists, continue to the next middleware
+    return await next(context);
+});
 
 app.Run();
 

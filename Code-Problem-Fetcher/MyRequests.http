@@ -4,6 +4,10 @@
 
 GET http://localhost:5186/Problems
 
+###
+
+GET http://localhost:5186/Problems/3
+
  
 ###
 POST http://localhost:5186/Problems
@@ -12,18 +16,16 @@ content-Type: application/json
 {
   "id": "1",
   "title": "Two Sum",
-  "Description": "Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.",
-  "Difficulty": "Easy",
-  "Category": "Array",
-  "testCases": [
-    {
-      "input": {
-        "nums": [2, 7, 11, 15],
-        "target": 9
-      },
-      "expectedOutput": [0, 1]
-    }
-  ],
+  "description": "Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.",
+  "difficulty": "Easy",
+  "category": "Array",
+  "tags": ["Array", "Hash Table"],
+  "link": "https://leetcode.com/problems/two-sum/",
+  "input": {
+    "nums": [2, 7, 11, 15],
+    "target": 9
+  },
+  "expectedOutput": [0, 1],
   "constraints": {
     "arrayLength": "2 <= nums.length <= 10^4",
     "uniqueSolution": "Only one valid answer exists"
@@ -31,8 +33,32 @@ content-Type: application/json
 }
 
 ###
+POST http://localhost:5186/Problems
+Content-Type: application/json
 
-DELETE http://localhost:5186/Problems/
+{
+  "id": "2",
+  "title": "Add Two Numbers",
+  "description": "You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order, and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.",
+  "difficulty": "Medium",
+  "category": "Linked List",
+  "tags": ["Linked List", "Math", "Recursion"],
+  "link": "https://leetcode.com/problems/add-two-numbers/",
+  "input": {
+    "l1": [2, 4, 3],
+    "l2": [5, 6, 4]
+  },
+  "expectedOutput": [7, 0, 8],
+  "constraints": {
+    "listLength": "1 <= list.length <= 100",
+    "digitRange": "0 <= Node.val <= 9",
+    "noLeadingZeros": "The number represented by the linked list does not have leading zeros"
+  }
+}
+
+###
+
+DELETE http://localhost:5186/Problems/2
 
 
 ### 

@@ -13,56 +13,57 @@ interface ProblemService
     Task<bool> deleteProblem(string id);
 }
 
-class InMemProblemService : ProblemService
-{
-    private List<Problem> problems = new();
+// class InMemProblemService : ProblemService
+// {
+//     private List<Problem> problems = new();
 
-    public Task<Problem?> getProblemById(string id)
-    {
-        var problem = problems.FirstOrDefault(p => p.Id == id);
-        return Task.FromResult(problem);
-    }
+//     public Task<Problem?> getProblemById(string id)
+//     {
+//         var problem = problems.FirstOrDefault(p => p.Id == id);
+//         Console.WriteLine($"Problem with ID {id} {problem})");
+//         return Task.FromResult(problem);
+//     }
 
-    public Task<IEnumerable<Problem>> getAllProblems()
-    {
-        return Task.FromResult<IEnumerable<Problem>>(problems);
-    }
+//     public Task<IEnumerable<Problem>> getAllProblems()
+//     {
+//         return Task.FromResult<IEnumerable<Problem>>(problems);
+//     }
 
-    public Task<Problem?> addProblem(Problem problem)
-    {
-        if (problems.Any(p => p.Id == problem.Id))
-        {
-            return Task.FromResult<Problem?>(null);
-        }
+//     public Task<Problem?> addProblem(Problem problem)
+//     {
+//         if (problems.Any(p => p.Id == problem.Id))
+//         {
+//             return Task.FromResult<Problem?>(null);
+//         }
         
-        problems.Add(problem);
-        return Task.FromResult<Problem?>(problem);
-    }
+//         problems.Add(problem);
+//         return Task.FromResult<Problem?>(problem);
+//     }
 
-    public Task<Problem?> updateProblem(string id, Problem updatedProblem)
-    {
-        var existingProblem = problems.FirstOrDefault(p => p.Id == id);
-        if (existingProblem is null)
-        {
-            return Task.FromResult<Problem?>(null);
-        }
+//     public Task<Problem?> updateProblem(string id, Problem updatedProblem)
+//     {
+//         var existingProblem = problems.FirstOrDefault(p => p.Id == id);
+//         if (existingProblem is null)
+//         {
+//             return Task.FromResult<Problem?>(null);
+//         }
 
-        problems.Remove(existingProblem);
-        problems.Add(updatedProblem);
-        return Task.FromResult<Problem?>(updatedProblem);
-    }
+//         problems.Remove(existingProblem);
+//         problems.Add(updatedProblem);
+//         return Task.FromResult<Problem?>(updatedProblem);
+//     }
 
-    public Task<bool> deleteProblem(string id)
-    {
-        var problem = problems.FirstOrDefault(p => p.Id == id);
-        if (problem is not null)
-        {
-            problems.Remove(problem);
-            return Task.FromResult(true);
-        }
-        return Task.FromResult(false);
-    }
-}
+//     public Task<bool> deleteProblem(string id)
+//     {
+//         var problem = problems.FirstOrDefault(p => p.Id == id);
+//         if (problem is not null)
+//         {
+//             problems.Remove(problem);
+//             return Task.FromResult(true);
+//         }
+//         return Task.FromResult(false);
+//     }
+// }
 
 class DatabaseProblemService : ProblemService
 {
@@ -76,7 +77,18 @@ class DatabaseProblemService : ProblemService
     public async Task<Problem?> getProblemById(string id)
     {
         // No longer need Include since TestCases are stored as JSON within Problem
-        return await _context.Problems.FirstOrDefaultAsync(p => p.Id == id);
+
+
+        var problem = await _context.Problems.FirstOrDefaultAsync(p => p.Id == id);
+        Console.WriteLine($"------------------------------");
+        Console.WriteLine($"Problem with ID {id}: {problem}");
+        if (problem is null)
+        {
+            Console.WriteLine($"Problem with ID {id} not found.");
+            return null;
+
+        }
+        return problem;
     }
 
     public async Task<IEnumerable<Problem>> getAllProblems()

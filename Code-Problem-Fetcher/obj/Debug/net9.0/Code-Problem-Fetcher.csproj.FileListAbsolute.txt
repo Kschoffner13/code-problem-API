@@ -160,3 +160,5 @@ C:\PROJECTS\code-problem-API\Code-Problem-Fetcher\bin\Debug\net9.0\runtimes\win\
 C:\PROJECTS\code-problem-API\Code-Problem-Fetcher\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 C:\PROJECTS\code-problem-API\Code-Problem-Fetcher\obj\Debug\net9.0\Code-Problem-Fetcher.csproj.AssemblyReference.cache
 C:\PROJECTS\code-problem-API\Code-Problem-Fetcher\obj\Debug\net9.0\Code-Pro.917B189E.Up2Date
+C:\PROJECTS\code-problem-API\Code-Problem-Fetcher\bin\Debug\net9.0\DotNetEnv.dll
+C:\PROJECTS\code-problem-API\Code-Problem-Fetcher\bin\Debug\net9.0\Sprache.dll
