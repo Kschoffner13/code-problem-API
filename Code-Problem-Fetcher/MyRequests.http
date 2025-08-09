@@ -10,8 +10,11 @@ POST http://localhost:5186/Problems
 content-Type: application/json
 
 {
-  "id": "",
+  "id": "1",
   "title": "Two Sum",
+  "Description": "Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.",
+  "Difficulty": "Easy",
+  "Category": "Array",
   "testCases": [
     {
       "input": {
